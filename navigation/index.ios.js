@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 import List from './component/list';
+import Photo from './component/photo';
 
 export default class navigation extends Component {
   render() {
@@ -215,4 +216,20 @@ const styles2 = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('navigation', () => App2);
+const imgs = [
+  'https://avatars2.githubusercontent.com/u/10626873?v=3&s=466',
+  'https://avatars2.githubusercontent.com/u/4279697?v=3&s=400',
+  'https://avatars2.githubusercontent.com/u/10626873?v=3&s=466'
+];
+
+class App3 extends Component {
+  render() {
+    return (
+      <View style={[{flex: 1, marginTop: 40}]}>
+        <Photo imgs={imgs}></Photo>
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent('navigation', () => App3);
