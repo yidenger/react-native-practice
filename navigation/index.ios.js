@@ -18,6 +18,8 @@ import {
 
 import List from './component/list';
 import Photo from './component/photo';
+import TabBar from './component/tabbar';
+import Webview from './component/webview';
 
 export default class navigation extends Component {
   render() {
@@ -232,4 +234,4 @@ class App3 extends Component {
   }
 }
 
-AppRegistry.registerComponent('navigation', () => App3);
+AppRegistry.registerComponent('navigation', () => Webview);

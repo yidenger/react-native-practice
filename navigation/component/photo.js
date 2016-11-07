@@ -1,3 +1,6 @@
+/**
+ * Image组件demo
+ */
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -57,7 +60,9 @@ export default class photo extends Component {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.goNext.bind(this)}>
-            <Text>下一张</Text>
+            <View style={styles.btn}>
+              <Text>下一张</Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
