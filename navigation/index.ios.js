@@ -234,4 +234,6 @@ class App3 extends Component {
   }
 }
 
-AppRegistry.registerComponent('navigation', () => Webview);
+import Shop from './component/shoppingCar';
+
+AppRegistry.registerComponent('navigation', () => Shop);
