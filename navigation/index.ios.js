@@ -236,4 +236,12 @@ class App3 extends Component {
 
 import Shop from './component/shoppingCar';
 
-AppRegistry.registerComponent('navigation', () => Shop);
+import Alert from './component/alert';
+
+import Actionsheet from './component/actionsheet';
+
+import PixelRatio from './component/pixelRatio';
+
+import Status from './component/status';
+
+AppRegistry.registerComponent('navigation', () => Status);
