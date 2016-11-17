@@ -24,6 +24,9 @@ const Util = {
         fetch(url, fetchOptions)
         .then(response => response.text())
         .then(responseText => callback(JSON.parse(responseText)))
+        .catch(e => {
+            console.log(e);
+        })
     },
     //key
     key: 'REACT-NATIVE'

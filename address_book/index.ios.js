@@ -32,7 +32,7 @@ import Service from './views/service';
 
 StatusBar.setBarStyle('light-content');
 
-export default class Address extends Component {
+export default class AddressBook extends Component {
     statics() {
         return {
             title: '主页',
@@ -157,7 +157,7 @@ export default class Address extends Component {
         const password = this.state.password;
         const path = Service.host + Service.login;
         const that = this;
-
+        console.log('path:', path);
         console.log(email, password);
         that.setState({
             showLogin: {
@@ -349,4 +349,4 @@ const styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('address_book', () => Address);
+AppRegistry.registerComponent('address_book', () => AddressBook);

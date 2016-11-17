@@ -113,6 +113,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#E30082'
   },
   part: {
-    
+    marginLeft: 5,
+    flex: 1,
+  },
+  link: {
+    color: '#1BB7FF',
+    marginTop: 2
+  },
+  unColor: {
+    color: '#575656',
+    marginTop: 8,
+    fontSize: 12
   }
 });
