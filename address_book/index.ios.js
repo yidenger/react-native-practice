@@ -41,9 +41,76 @@ StatusBarIOS.setStyle('light-content');
 class Address extends Component {
   statics() {
     return {
-      
+      title: '主页',
+      description: '选项卡'
     };
   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTab: 'home',
+      showIndex: {
+        height: 0,
+        opacity: 0
+      },
+      showLogin: {
+        flex: 1,
+        opacity: 1
+      },
+      isLoadingShow: false
+    };
+  }
+  componentDidMount() {
+    const that = this;
+    AsyncStorage.getItem('token', function(err, token){
+      if(!err && token){
+        let path = Service.host + Service.loginByToken;
+        Util.post(path, {
+          token: token
+        }, function(data){
+          if(data, status){
+            that.setState({
+              showLogin: {
+                height: 0,
+                width: 0,
+                flex: 0,
+              },
+              showIndex: {
+                flex: 1,
+                opacity: 1
+              },
+              isLoadingShow: false
+            });
+          }
+        });
+      }
+      else{
+        that.setState({
+          showIndex: {
+            height: 0,
+            opacity: 0
+          },
+          showLogin: {
+            flex: 1,
+            opacity: 1
+          },
+          isLoadingShow: false
+        });
+      }
+    });
+
+    const path = Service.host + Service.getMessage;
+    Util.post(path, {
+      key: Util.key
+    }, function(data){
+      that.setState({
+        data: data
+      });
+    });
+
+  }
+
+  _addNavigator(){}
 }
 
 export default class address_book extends Component {
