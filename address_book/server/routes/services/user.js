@@ -109,6 +109,7 @@ var User = {
     var deviceId = req.param('deviceId');
     var token = util.guid() + deviceId;
     var content = JSON.parse(fs.readFileSync(USER_PATH).toString());
+    console.log('email: '+  email + ', password: ' + req.param('password') + ', md5: ' + password);
     for(var i in content){
       //验证通过
       if(content[i].email === email && content[i].password === password){
