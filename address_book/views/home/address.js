@@ -49,10 +49,10 @@ export default class Address extends Component {
     const colors = ['#E20079', '#FFD6602', '#25BFFE', '#F90000',
       '#04E246', '#04E246', '#00AFC9'
     ];
-
+    const color = { backgroundColor: colors[parseInt(Math.random() * 7)]};
     for (let i in items) {
       view.push(
-        <View style={styles.row}>
+        <View style={styles.row} key={i}>
           <View style={[styles.text, color]}>
             <Text style={{ fontSize: 25, color: '#FFF', fontWeight: 'bold' }}>
               {items[i].username.substr(0, 1) || '未'}

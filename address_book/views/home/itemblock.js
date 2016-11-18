@@ -18,11 +18,12 @@ export default class ItemBlock extends Component {
     const key = Util.key;
     const partment = this.props.partment;
     const path = Service.host + Service.getUser;
-
+    console.log(path, partment, key);
     Util.post(path, {
       key: key,
       partment: partment
     }, function(data) {
+      console.log('data: ', data);
       nav.push({
         title: this.props.title,
         component: Address,
