@@ -9,6 +9,8 @@ import {
   AlertIOS,
   Image,
   AsyncStorage,
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
 
 import Util from '../util';
@@ -64,7 +66,7 @@ export default class AddUser extends Component {
         this.setState(color);
         this.setState();
         //清除其他选中的效果
-        delete items[i];
+        delete items[id];
 
         for(let i in items) {
             const newObj = {};
@@ -87,8 +89,142 @@ export default class AddUser extends Component {
                 partment = this.state.tags[0];
                 break;
             case 'B': 
+                partment = this.state.tags[1];
+                break;
+            case 'C': 
+                partment = this.state.tags[2];
+                break;
+            case 'D':
+                partment = this.state.tags[3];
+                break;
+            case 'E': 
+                partment = this.state.tags[4];
+                break;
+            case 'F':
+                partment = this.state.tags[5];
+                break;
+            default:
+                ;
         }
+
+        this.setState({partment: partment});
     }
+
+    _selectType(id) {
+        const obj = {};
+        const color = {};
+        const items = {
+            yan: {},
+            chan: {},
+            project: {}
+        };
+        //加上选中的效果
+        obj[id] = {
+            backgroundColor: '#3BC1FF',
+            borderColor: '#3BC1FF'
+        };
+        color[id + '_text'] = {
+            color: '#FFF'
+        };
+        this.setState(obj);
+        this.setState(color);
+
+        //清除其他选中的效果 
+        delete items[id];
+        for(let i in items) {
+            const newObj = {};
+            newObj[i] = {
+                backgroundColor: '#FFF',
+                borderColor: '#DDD'
+            };
+            const newColor = {};
+            newColor[i + '_text'] = {
+                color: '#000'
+            };
+            this.setState(newObj);
+            this.setState(newColor);
+        }
+
+        //增加变量
+        let tag = '研发';
+        switch(id) {
+            case 'yan': 
+                tag = '研发';
+                break;
+            case 'chan':
+                tag = '产品';
+                break;
+            case 'project':
+                tag = '项目';
+                break;
+            default:
+                break;
+        }
+
+        this.setState({
+            tag: tag
+        });
+    }
+
+    _setUserName(val) {
+        this.setState({
+            username: val
+        });
+    }
+
+    _setPassword(val) {
+        this.setState({
+            password: val
+        });
+    }
+
+    _setEmail(val) {
+        this.setState({
+            email: val
+        });
+    }
+
+    _setTel(val) {
+        this.setState({
+            tel: val
+        });
+    }
+
+    _addUser() {
+        const username = this.state.username;
+        const email = this.state.email;
+        const password = this.state.password;
+        const partment = this.state.partment;
+        const tag = this.state.tag;
+        const tel = this.state.tel;
+
+        if(!username || !email || !password || !tel) {
+            return AlertIOS.alert('提示', '用户名、密码、初始密码、邮箱电话，必填，请确认');
+        }
+
+        const obj = {
+            username: username,
+            email: email,
+            password: password,
+            partment: partment,
+            tag: tag,
+            tel: tel
+        };
+
+        const path = Service.host + Service.createUser;
+
+        Util.post(path, obj, 
+            function(data) {
+                if(data.status) {
+                    AlertIOS.alert('成功', '创建用户成功，请告知用户初始密码');
+                }
+                else {
+                    AlertIOS.alert('失败', '创建用户失败');
+                }
+            }
+        );
+    }
+
     render() {
         const tagOne = [];
         for(let i = 0; i < 3; i++) {
@@ -176,3 +312,49 @@ export default class AddUser extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 7
+    },
+    label: {
+        width: 50,
+        marginLeft: 10
+    },
+    input: {
+        borderWidth: Util.pixel,
+        height: 35,
+        flex: 1,
+        marginRight: 20,
+        borderColor: '#DDD',
+        borderRadius: 4,
+        paddingLeft: 5,
+        fontSize: 14
+    },
+    partment: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 10
+    },
+    part: {
+        width: 65,
+        height: 30,
+        borderWidth: Util.pixel,
+        borderColor: '#DDD',
+        borderRadius: 3,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 10
+    },
+    btn: {
+        borderColor: '#268DFF',
+        height: 35,
+        width: 200,
+        borderRadius: 5,
+        borderWidth: Util.pixel,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+});

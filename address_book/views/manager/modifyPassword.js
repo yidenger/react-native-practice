@@ -9,12 +9,14 @@ import {
   AlertIOS,
   Image,
   AsyncStorage,
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
 
 import Util from '../util';
 import Service from '../service';
 
-export default class ModifyUser extends Componetn {
+export default class ModifyUser extends Component {
   _getOldPassword(val) {
     this.setState({
       oldPassword: val
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     justifyContent: 'center',
-    aliginItems: 'center',
+    alignItems: 'center',
     marginTop: 20,
     backgroundColor: '#1DB8FF',
     height: 38,
