@@ -4,7 +4,8 @@ import {
     Text,
     ScrollView,
     TouchableHighlight,
-    StyleSheet
+    StyleSheet,
+    TextInput,
 } from 'react-native';
 
 import Util from './util';
@@ -13,15 +14,20 @@ import Item from './message/item';
 import Detail from './message/detail';
 
 export default class Message extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         let contents = [];
         const items = [];
+        
         if(this.props.data.status) {
             contents = this.props.data.data;
         }
         for(let i = 0; i < contents.length; i++){
             items.push(
                 <Item
+                    key={i}
                     data={contents[i]}
                     nav={this.props.navigator}
                     component={Detail}

@@ -25,11 +25,11 @@ export default class Detail extends Component {
                 </View>
                 <View>
                     <View style={[styles.luokuan, {marginTop: 25}]}></View>
-                    <Text style={{[styles.text, {color: '#007AFF'}]}}>
+                    <Text style={[styles.text, {color: '#007AFF'}]}>
                         {content.username}
                     </Text>
                 </View>
-                <View style={style.luokuan}>
+                <View style={styles.luokuan}>
                     <View style={{flex: 1}}></View>
                     <Text style={[styles.text, {color: '#3BC1FF'}]}>
                         {content.time}

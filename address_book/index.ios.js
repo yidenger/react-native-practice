@@ -116,10 +116,9 @@ export default class AddressBook extends Component {
 
     _addNavigator(component, title) {
         let data = null;
-        if (this.state.title === '公告') {
+        if (title === '公告') {
             data = this.state.data;
         }
-        console.log(this.state);
         return (
             <NavigatorIOS
                 style={{ flex: 1 }}

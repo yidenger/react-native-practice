@@ -28,7 +28,8 @@ export default class Item extends Component {
   }
 
   render() {
-    <TouchableHighlight onPress={this.loadPage.bind(this, this.props.data)}>
+    return (
+      <TouchableHighlight onPress={this.loadPage.bind(this, this.props.data)}>
       <View style={styles.item}>
         <View style={styles.width55}>
           <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>
@@ -50,6 +51,8 @@ export default class Item extends Component {
         </View>
       </View>
     </TouchableHighlight>
+    );
+    
   }
 }
 
