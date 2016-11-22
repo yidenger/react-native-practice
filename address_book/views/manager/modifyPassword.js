@@ -63,18 +63,18 @@ export default class ModifyUser extends Component {
       <ScrollView>
         <View style={{ height: 35, marginTop: 30 }}>
           <TextInput style={styles.input} password={true} placeholder="原始密码"
-            onChangeText={this._getOldPassword}
+            onChangeText={this._getOldPassword.bind(this)}
             >
           </TextInput>
         </View>
         <View style={{ height: 35, marginTop: 5 }}>
           <TextInput style={styles.input} password={true} placeholder="新密码"
-            onChangeText={this._getNewPassword}
+            onChangeText={this._getNewPassword.bind(this)}
             >
           </TextInput>
         </View>
         <View>
-          <TouchableOpacity onPress={this._resetPassword}>
+          <TouchableOpacity onPress={this._resetPassword.bind(this)}>
             <View style={styles.btn}>
               <Text style={{ color: '#FFF' }}>
                 修改密码
